@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="simple_cart">
+    
+    <!-- 仿真参数 -->
+    <option timestep="0.002" integrator="RK4" gravity="0 0 -9.81"/>
+    
+    <!-- 视觉设置 -->
+    <visual>
+        <headlight diffuse="0.6 0.7 0.7"/>
+        <rgba>0.95 0.95 0.95 1</rgba>
+    </visual>
+    
+
+    
+    <!-- 模型统计信息 -->
+    <statistic center="0 0 0" extent="2"/>
+    
+    <!-- 物理世界 -->
+    <worldbody>
+        
+        <!-- 地面 -->
+        <body name="ground" pos="0 0 0">
+            <geom name="ground_plane" 
+                  type="plane" 
+                  size="2 2 0.01"
+                  material="ground_material"/>
+        </body>
+        
+        <!-- 小车主体 -->
+        <body name="cart" pos="0 0 0.05">
+            
+            <!-- 小车主体几何体 - 方块 -->
+            <geom name="cart_body" 
+                  type="box" 
+                  size="0.2 0.1 0.05"
+                  mass="1.0"
+                  material="cart_material"
+                  friction="0.8 0.1 0.1"/>
+            
+            <!-- 小车关节 - 水平运动自由度 -->
+            <joint name="cart_joint" 
+                   type="slide" 
+                   axis="1 0 0"
+                   range="-1 1"
+                   damping="0.1"
+                   frictionloss="0.01"/>
+            
+        </body>
+        
+    </worldbody>
+    
+    <!-- 驱动器 - 控制小车水平运动 -->
+    <actuator>
+        <motor name="cart_motor" 
+               joint="cart_joint"
+               gear="10"
+               ctrllimited="true"
+               ctrlrange="-1 1"/>
+    </actuator>
+    
+</mujoco>

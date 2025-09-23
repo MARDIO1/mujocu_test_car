@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="car_all">
+
+    <include file="car\option.xml"/>
+    <include file="car\car_place.xml"/>
+    <include file="car\car.xml"/>
+    
+
+</mujoco>

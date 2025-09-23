@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 地面平台定义 -->
+<!-- 提供倒立摆小车运动的支撑面 -->
+
+<worldbody>
+
+    <!-- 地面主体 -->
+    <body name="ground" pos="0 0 0">
+        
+        <!-- 地面几何体 - 大平面 -->
+        <geom name="ground_plane" 
+              type="plane" 
+              size="2 2 0.01"
+              material="ground_material"
+              friction="0.6 0.01 0.01"/>
+        
+    </body>
+
+</worldbody>
